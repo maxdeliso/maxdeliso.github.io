@@ -1,0 +1,10 @@
+baseURL = "http://maxdeliso.name/"
+languageCode = "en-us"
+title = "Reflections"
+
+[Params]
+  Author = "Max DeLiso"
+  disqusShortname = "maxdeliso-name"
+
+[blackfriday]
+  hrefTargetBlank = true
