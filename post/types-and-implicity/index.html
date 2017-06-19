@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta name="generator" content="Hugo 0.22-DEV" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types and Implicity | Reflections</title>
+    <meta name="description" content="A rumination on type systems and how different programming languages respond to attempts at implicit conversion.">
+    <meta name="keywords" content="type systems, programming languages, clojure, ocaml, haskell">
+    
+    
+    
+    
+    
+
+  <meta name="author" content="Max DeLiso">
+
+
+    <meta property="og:title" content="Types and Implicity" />
+<meta property="og:description" content="A rumination on type systems and how different programming languages respond to attempts at implicit conversion." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://maxdeliso.name/post/types-and-implicity/" />
+
+
+
+<meta property="article:published_time" content="2017-06-17T16:27:41-07:00"/>
+<meta property="article:modified_time" content="2017-06-17T16:27:41-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <meta name="theme-color" content="#000">
+
+    
+    
+    
+    <link rel="canonical" href="http://maxdeliso.name/post/types-and-implicity/">
+    
+    
+    <link rel="icon" sizes="any" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%2046%2045'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EAfter%20Dark%3C/title%3E%3Cpath%20d='M.708%2045L23%20.416%2045.292%2045H.708zM35%2038L23%2019%2011%2038h24z'%20fill='%23000'/%3E%3C/svg%3E">
+
+    <style>
+      html{font-size:12px}*{box-sizing:border-box;text-rendering:geometricPrecision}body{font-size:1rem;line-height:1.5rem;margin:0;font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;word-wrap:break-word}h1,h2,h3,h4,h5,h6{line-height:1.3em}fieldset{border:none;padding:0;margin:0}pre{padding:2rem;margin:1.75rem 0;background-color:#fff;border:1px solid #ccc;overflow:auto}code[class*=language-],pre[class*=language-],pre code{font-weight:100;text-shadow:none;margin:1.75rem 0}a{cursor:pointer;color:#ff2e88;text-decoration:none;border-bottom:1px solid #ff2e88}a:hover{background-color:#ff2e88;color:#fff}.grid{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}.grid.\-top{-ms-flex-align:start;-ms-grid-row-align:flex-start;align-items:flex-start}.grid.\-middle{-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}.grid.\-bottom{-ms-flex-align:end;-ms-grid-row-align:flex-end;align-items:flex-end}.grid.\-stretch{-ms-flex-align:stretch;-ms-grid-row-align:stretch;align-items:stretch}.grid.\-baseline{-ms-flex-align:baseline;-ms-grid-row-align:baseline;align-items:baseline}.grid.\-left{-ms-flex-pack:start;justify-content:flex-start}.grid.\-center{-ms-flex-pack:center;justify-content:center}.grid.\-right{-ms-flex-pack:end;justify-content:flex-end}.grid.\-between{-ms-flex-pack:justify;justify-content:space-between}.grid.\-around{-ms-flex-pack:distribute;justify-content:space-around}.cell{-ms-flex:1;flex:1;box-sizing:border-box}@media screen and (min-width:768px){.cell.\-1of12{-ms-flex:0 0 8.33333%;flex:0 0 8.33333%}.cell.\-2of12{-ms-flex:0 0 16.66667%;flex:0 0 16.66667%}.cell.\-3of12{-ms-flex:0 0 25%;flex:0 0 25%}.cell.\-4of12{-ms-flex:0 0 33.33333%;flex:0 0 33.33333%}.cell.\-5of12{-ms-flex:0 0 41.66667%;flex:0 0 41.66667%}.cell.\-6of12{-ms-flex:0 0 50%;flex:0 0 50%}.cell.\-7of12{-ms-flex:0 0 58.33333%;flex:0 0 58.33333%}.cell.\-8of12{-ms-flex:0 0 66.66667%;flex:0 0 66.66667%}.cell.\-9of12{-ms-flex:0 0 75%;flex:0 0 75%}.cell.\-10of12{-ms-flex:0 0 83.33333%;flex:0 0 83.33333%}.cell.\-11of12{-ms-flex:0 0 91.66667%;flex:0 0 91.66667%}}@media screen and (max-width:768px){.grid{-ms-flex-direction:column;flex-direction:column}.cell{-ms-flex:0 0 auto;flex:0 0 auto}}.hack,.hack blockquote,.hack code,.hack em,.hack h1,.hack h2,.hack h3,.hack h4,.hack h5,.hack h6,.hack strong{font-size:1rem;font-style:normal;font-family:Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif}.hack blockquote,.hack code,.hack em,.hack strong{line-height:20px}.hack blockquote,.hack code,.hack footer,.hack h1,.hack h2,.hack h3,.hack h4,.hack h5,.hack h6,.hack header,.hack li,.hack ol,.hack p,.hack section,.hack ul{float:none;margin:0;padding:0}.hack blockquote,.hack h1,.hack ol,.hack p,.hack ul{margin-top:20px;margin-bottom:20px}.hack h1{position:relative;display:inline-block;display:table-cell;padding:20px 0 30px;margin:0;overflow:hidden}.hack h1:after{content:"====================================================================================================";position:absolute;bottom:10px;left:0}.hack h1+*{margin-top:0}.hack h2,.hack h3,.hack h4,.hack h5,.hack h6{position:relative;margin-bottom:1.75rem}.hack h2:before,.hack h3:before,.hack h4:before,.hack h5:before,.hack h6:before{display:inline}.hack h2:before{content:"## "}.hack h3:before{content:"### "}.hack h4:before{content:"#### "}.hack h5:before{content:"##### "}.hack h6:before{content:"###### "}.hack li{position:relative;display:block;padding-left:20px}.hack li:after{position:absolute;top:0;left:0}.hack ul>li:after{content:"-"}.hack ol{counter-reset:a}.hack ol>li:after{content:counter(a) ".";counter-increment:a}.hack blockquote{position:relative;padding-left:17px;padding-left:2ch;overflow:hidden}.hack blockquote:after{content:">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>";white-space:pre;position:absolute;top:0;left:0;line-height:20px}.hack em:after,.hack em:before{content:"*";display:inline}.hack pre code:after,.hack pre code:before{content:''}.hack code{font-weight:700}.hack code:after,.hack code:before{content:"`";display:inline}.hack hr{position:relative;height:20px;overflow:hidden;border:0;margin:20px 0}.hack hr:after{content:"----------------------------------------------------------------------------------------------------";position:absolute;top:0;left:0;line-height:20px;width:100%;word-wrap:break-word}@-moz-document url-prefix(){.hack h1{display:block}}.hack-ones ol>li:after{content:"1."}p{margin:0 0 1.75rem}.container{max-width:70rem}.container,.container-fluid{margin:0 auto;padding:0 1rem}.inner{padding:1rem}.inner2x{padding:2rem}.pull-left{float:left}.pull-right{float:right}.progress-bar{height:8px;opacity:.8;background-color:#ccc;margin-top:12px}.progress-bar.progress-bar-show-percent{margin-top:38px}.progress-bar-filled{background-color:gray;height:100%;transition:width .3s ease;position:relative;width:0}.progress-bar-filled:before{content:'';border:6px solid transparent;border-top-color:gray;position:absolute;top:-12px;right:-6px}.progress-bar-filled:after{color:gray;content:attr(data-filled);display:block;font-size:12px;white-space:nowrap;position:absolute;border:6px solid transparent;top:-38px;right:0;-ms-transform:translateX(50%);transform:translateX(50%)}table{width:100%;border-collapse:collapse;margin:1.75rem 0;color:#778087}table td,table th{vertical-align:top;border:1px solid #ccc;line-height:15px;padding:10px}table thead th{font-size:10px}table tbody td:first-child{font-weight:700;color:#333}.form{width:30rem}.form-group{margin-bottom:1.75rem;overflow:auto}.form-group label{border-bottom:2px solid #ccc;color:#333;width:10rem;display:inline-block;height:38px;line-height:38px;padding:0;float:left;position:relative}.form-group.form-success label{color:#4caf50!important;border-color:#4caf50!important}.form-group.form-warning label{color:#ff9800!important;border-color:#ff9800!important}.form-group.form-error label{color:#f44336!important;border-color:#f44336!important}.form-control{outline:none;border:none;border-bottom:2px solid #ccc;padding:.5rem 0;width:20rem;height:38px;background-color:transparent}.form-control:focus{border-color:#555}.form-group.form-textarea label:after{position:absolute;content:'';width:2px;background-color:#fff;right:-2px;top:0;bottom:0}textarea.form-control{height:auto;resize:none;padding:1rem 0;border-bottom:2px solid #ccc;border-left:2px solid #ccc;padding:.5rem}select.form-control{border-radius:0;background-color:transparent;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none}.help-block{color:#999;margin-top:.5rem}.form-actions{margin-bottom:1.75rem}.btn{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;cursor:pointer;outline:none;padding:.65rem 2rem;font-size:1rem;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;z-index:1}.btn:active{box-shadow:inset 0 1px 3px rgba(0,0,0,.12)}.btn.btn-ghost{border-color:#757575;color:#757575;background-color:transparent}.btn.btn-ghost:focus,.btn.btn-ghost:hover{border-color:#424242;color:#424242;z-index:2}.btn.btn-ghost:hover{background-color:transparent}.btn-block{width:100%;display:-ms-flexbox;display:flex}.btn-default{color:#fff;background-color:#e0e0e0;border:1px solid #e0e0e0;color:#333}.btn-default:focus:not(.btn-ghost),.btn-default:hover{background-color:#dcdcdc;border-color:#dcdcdc}.btn-success{color:#fff;background-color:#4caf50;border:1px solid #4caf50}.btn-success:focus:not(.btn-ghost),.btn-success:hover{background-color:#43a047;border-color:#43a047}.btn-success.btn-ghost{border-color:#4caf50;color:#4caf50}.btn-success.btn-ghost:focus,.btn-success.btn-ghost:hover{border-color:#388e3c;color:#388e3c;z-index:2}.btn-error{color:#fff;background-color:#f44336;border:1px solid #f44336}.btn-error:focus:not(.btn-ghost),.btn-error:hover{background-color:#e53935;border-color:#e53935}.btn-error.btn-ghost{border-color:#f44336;color:#f44336}.btn-error.btn-ghost:focus,.btn-error.btn-ghost:hover{border-color:#d32f2f;color:#d32f2f;z-index:2}.btn-warning{color:#fff;background-color:#ff9800;border:1px solid #ff9800}.btn-warning:focus:not(.btn-ghost),.btn-warning:hover{background-color:#fb8c00;border-color:#fb8c00}.btn-warning.btn-ghost{border-color:#ff9800;color:#ff9800}.btn-warning.btn-ghost:focus,.btn-warning.btn-ghost:hover{border-color:#f57c00;color:#f57c00;z-index:2}.btn-info{color:#fff;background-color:#00bcd4;border:1px solid #00bcd4}.btn-info:focus:not(.btn-ghost),.btn-info:hover{background-color:#00acc1;border-color:#00acc1}.btn-info.btn-ghost{border-color:#00bcd4;color:#00bcd4}.btn-info.btn-ghost:focus,.btn-info.btn-ghost:hover{border-color:#0097a7;color:#0097a7;z-index:2}.btn-primary{color:#fff;background-color:#2196f3;border:1px solid #2196f3}.btn-primary:focus:not(.btn-ghost),.btn-primary:hover{background-color:#1e88e5;border-color:#1e88e5}.btn-primary.btn-ghost{border-color:#2196f3;color:#2196f3}.btn-primary.btn-ghost:focus,.btn-primary.btn-ghost:hover{border-color:#1976d2;color:#1976d2;z-index:2}.btn-group{overflow:auto}.btn-group .btn{float:left}.btn-group .btn-ghost:not(:first-child){margin-left:-1px}.card{border:1px solid #ccc}.card .card-header{color:#333;text-align:center;background-color:#ddd;padding:.5rem 0}.alert{color:#ccc;padding:1rem;border:1px solid #ccc;margin-bottom:1.75rem}.alert-success{color:#4caf50;border-color:#4caf50}.alert-error{color:#f44336;border-color:#f44336}.alert-info{color:#00bcd4;border-color:#00bcd4}.alert-warning{color:#ff9800;border-color:#ff9800}.media:not(:last-child){margin-bottom:1.25rem}.media-left{padding-right:1rem}.media-left,.media-right{display:table-cell;vertical-align:top}.media-right{padding-left:1rem}.media-body{display:table-cell;vertical-align:top}.media-heading{font-size:1.16667rem;font-weight:700}.media-content{margin-top:.3rem}.avatarholder,.placeholder{background-color:#f0f0f0;text-align:center;color:#b9b9b9;font-size:1rem;border:1px solid #f0f0f0}.avatarholder{width:48px;height:48px;line-height:46px;font-size:2rem;background-size:cover;background-position:50%;background-repeat:no-repeat}.avatarholder.rounded{border-radius:33px}.loading{height:20px;width:20px;animation:a .6s infinite linear;border:2px solid #e91e63;border-right-color:transparent;border-radius:50%}.btn .loading{display:inline-block;float:left;margin-right:.5rem;width:14px;height:14px}@keyframes a{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.menu{width:100%}.menu .menu-item{display:block;color:#616161;border-color:#616161}.menu .menu-item.active,.menu .menu-item:hover{color:#000;border-color:#000;background-color:transparent}@media screen and (max-width:768px){.form-group label{display:block;border-bottom:none;width:100%}.form-group.form-textarea label:after{display:none}.form-control{width:100%}textarea.form-control{border-left:none;padding:.5rem 0}pre::-webkit-scrollbar{height:3px}}@media screen and (max-width:480px){.form{width:100%}}
+.dark{color:#ccc}.dark,.dark pre{background-color:#000}.dark pre{padding:0;border:none}.dark pre code{color:#00bcd4}.dark h1 a,.dark h2 a,.dark h3 a,.dark h4 a,.dark h5 a{color:#ccc}.dark code,.dark strong{color:#fff}.dark code{font-weight:100}.dark table{color:#ccc}.dark table td,.dark table th{border-color:#444}.dark table tbody td:first-child{color:#fff}.dark .form-group label{color:#ccc;border-color:rgba(95,95,95,.78)}.dark .form-group.form-textarea label:after{background-color:#000}.dark .form-control{color:#ccc;border-color:rgba(95,95,95,.78)}.dark .form-control:focus{border-color:#ccc;color:#ccc}.dark textarea.form-control{color:#ccc}.dark .card{border-color:rgba(95,95,95,.78)}.dark .card .card-header{background-color:transparent;color:#ccc;border-bottom:1px solid rgba(95,95,95,.78)}.dark .btn.btn-ghost.btn-default{border-color:#ababab;color:#ababab}.dark .btn.btn-ghost.btn-default:focus,.dark .btn.btn-ghost.btn-default:hover{border-color:#9c9c9c;color:#9c9c9c;z-index:1}.dark .btn.btn-ghost.btn-default:focus,.dark .btn.btn-ghost.btn-default:hover{border-color:#e0e0e0;color:#e0e0e0}.dark .btn.btn-ghost.btn-primary:focus,.dark .btn.btn-ghost.btn-primary:hover{border-color:#64b5f6;color:#64b5f6}.dark .btn.btn-ghost.btn-success:focus,.dark .btn.btn-ghost.btn-success:hover{border-color:#81c784;color:#81c784}.dark .btn.btn-ghost.btn-info:focus,.dark .btn.btn-ghost.btn-info:hover{border-color:#4dd0e1;color:#4dd0e1}.dark .btn.btn-ghost.btn-error:focus,.dark .btn.btn-ghost.btn-error:hover{border-color:#e57373;color:#e57373}.dark .btn.btn-ghost.btn-warning:focus,.dark .btn.btn-ghost.btn-warning:hover{border-color:#ffb74d;color:#ffb74d}.dark .avatarholder,.dark .placeholder{background-color:transparent;border-color:#333}.dark .menu .menu-item{color:#ccc;border-color:rgba(95,95,95,.78)}.dark .menu .menu-item.active,.dark .menu .menu-item:hover{color:#fff;border-color:#ccc}
+
+      @keyframes intro {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.muted {
+  color: rgba(255, 255, 255, 0.5);
+}
+main, footer {
+  animation: intro 0.3s both;
+  animation-delay: 0.15s;
+}
+:target {
+  color: #fff;
+}
+/* hack.css overrides and enhancements */
+.hack li ul {
+  margin: 0;
+}
+.main {
+  padding: 20px 10px;
+}
+nav a.active {
+  background-color: #ff2e88;
+  color: #fff;
+}
+a[itemprop="url"] {
+  color: #ff9800;
+}
+a[itemprop="url"]:hover {
+  color: #fff;
+}
+a[href*="//"]::after {
+  /* data uri svg icon. thanks to @Fastidious for the idea */
+  content: " " url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20class='i-external'%20viewBox='0%200%2032%2032'%20width='14'%20height='14'%20fill='none'%20stroke='%23ff9800'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='9.38%'%3E%3Cpath%20d='M14%209%20L3%209%203%2029%2023%2029%2023%2018%20M18%204%20L28%204%2028%2014%20M28%204%20L14%2018'/%3E%3C/svg%3E");
+}
+html {
+  font-size: 13px;
+}
+.hack pre {
+  font-size: 17px;
+}
+article [itemprop="description"] {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 1em;
+  }
+  .container {
+    max-width: 50rem;
+  }
+}
+
+      .muted {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+// https://github.com/comfusion/after-dark#syntax-highlighting
+.highlight,pre.highlight{background:#282c34;color:#abb2bf}.highlight pre{background:#282c34}.highlight .ge{font-style:italic}.highlight .gs{font-weight:700}.highlight .ow{font-weight:700}.highlight .n,.highlight .nf,.highlight .nn,.highlight .o,.highlight .p{color:#abb2bf}.highlight .c,.highlight .c1,.highlight .cm,.highlight .cp,.highlight .cs{color:#5c6370;font-style:italic}.highlight .sr,.highlight .ss{color:#56b6c2}.highlight .k,.highlight .kc,.highlight .kd,.highlight .kn,.highlight .kp,.highlight .kr,.highlight .kt{color:#c678dd}.highlight .l,.highlight .ld,.highlight .s,.highlight .s1,.highlight .s2,.highlight .sb,.highlight .sc,.highlight .sd,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx{color:#98c379}.highlight .nt,.highlight .nx,.highlight .vi{color:#e06c75}.highlight .il,.highlight .m,.highlight .mf,.highlight .mh,.highlight .mi,.highlight .mo,.highlight .na{color:#d19a66}.highlight .bp,.highlight .nb,.highlight .nc,.highlight .nd,.highlight .ne,.highlight .ni,.highlight .nl,.highlight .no,.highlight .nv,.highlight .py,.highlight .vc,.highlight .vg{color:#e5c07b}.highlight .err{color:#fff;background-color:#e05252}.highlight .gd{color:#e05252}.highlight .gi{color:#43d08a}.highlight .w{color:#f8f8f2}.highlight .cpf{color:navy}.highlight .gu{color:#75715e}.highlight .lineno{color:#636d83;user-select:none}.highlight .hll{color:#abb2bf;background-color:#2c313a}.highlight .language-json .w+.s2{color:#e06c75}.highlight .language-json .kc{color:#56b6c2}
+
+    </style>
+    
+    
+  </head>
+  
+  <body class="hack dark main container">
+    <header>
+  
+  <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+    
+    
+  </nav>
+
+
+</header>
+    <main>
+  <article itemscope itemtype="http://schema.org/BlogPosting">
+    
+<meta itemprop="name" content="Types and Implicity">
+<meta itemprop="description" content="A rumination on type systems and how different programming languages respond to attempts at implicit conversion.">
+
+
+<meta itemprop="dateModified" content="2017-06-17T16:27:41-07:00" />
+<meta itemprop="wordCount" content="2086">
+
+
+
+<meta itemprop="keywords" content="" />
+
+    <header>
+      <h1 itemprop="headline">Types and Implicity</h1>
+      <p class="muted">
+        <svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <circle cx="16" cy="16" r="14" />
+  <path d="M16 8 L16 16 20 20" />
+</svg>
+<span>10 minute read</span>
+<svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+  <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
+</svg>
+
+  Published: <time datetime="2017-06-17T16:27:41-07:00">17 Jun, 2017</time>
+
+
+      </p>
+    </header>
+    
+      <blockquote itemprop="description">A rumination on type systems and how different programming languages respond to attempts at implicit conversion.</blockquote>
+    
+    
+  <details>
+    <summary>Table of Contents</summary>
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#trust">Trust:</a>
+<ul>
+<li><a href="#target-audience">Target audience:</a></li>
+<li><a href="#mistakes">Mistakes:</a></li>
+</ul></li>
+<li><a href="#type-systems">Type Systems:</a>
+<ul>
+<li><a href="#static-vs-dynamic">Static vs Dynamic:</a></li>
+<li><a href="#note-about-strong-vs-weak">Note about &ldquo;strong&rdquo; vs &ldquo;weak&rdquo;:</a></li>
+<li><a href="#implicit-conversion-examples">Implicit conversion examples:</a>
+<ul>
+<li>
+<ul>
+<li><a href="#javascript">Javascript:</a></li>
+<li><a href="#c">C:</a></li>
+<li><a href="#python">Python:</a></li>
+<li><a href="#java">Java:</a></li>
+<li><a href="#clojure">Clojure:</a></li>
+<li><a href="#ocaml">OCaml:</a></li>
+<li><a href="#haskell">Haskell:</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><a href="#trade-offs">Trade-offs:</a></li>
+<li><a href="#further-reading">Further Reading:</a></li>
+</ul></li>
+</ul>
+</nav>
+  </details>
+  <script>
+    const el = document.querySelector('details summary')
+    el.onclick = () => {
+      (function(l,o,a,d,e,r){e=o.createElement(a),r=o.getElementsByTagName(a)[0];e.async=1;e.src=d;r.parentNode.insertBefore(e,r)})(window,document,'script','/js/smoothscroll.js');
+      el.onclick = null
+    }
+    document.querySelectorAll('#TableOfContents a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector(
+          link.href.slice(link.href.indexOf('#'))
+        ).scrollIntoView({ behavior: 'smooth' })
+      })
+    })
+  </script>
+
+
+    <div itemprop="articleBody">
+      
+
+<h2 id="trust">Trust:</h2>
+
+<p>The following is a rumination on some aspects of type systems and programming languages, along with several examples. I anticipate, only now just sitting down to write this, that the tone of the post shall be rather whimsical, although I could be wrong. It&rsquo;s possible that, after having completed the post and then reviewing it some before publishing, I shall discover that the tone is not whimsical. If that&rsquo;s the case, I may edit the post a bit, specifically these ruminations on anticipated whimsicalness, with the intent of not misleading the reader. It is important to mention that, by design, all edits to this post after it has been published shall be discoverable publicly, due to the source code for the site being <a href="https://github.com/maxdeliso/maxdeliso.github.io" target="_blank">publicly available</a> alongside the generated website. Now that we have hopefully established some trust, let&rsquo;s prevaricate some more prior to veering into the more salient points.</p>
+
+<h3 id="target-audience">Target audience:</h3>
+
+<p>Normally these posts begin with an elaborate prelude warning the reader that they may not be able to cope with the material that is to follow, and that merely considering skipping forward into the details of the article below without having successfully defended a thesis shall cause blindness and difficulty breathing, at a minimum. Then, after that, a lengthy list of qualifications that are deemed acceptable as a substitute for successful thesis defense are supplied, in decreasing order of preference. I shall address both of these formalities as follows:</p>
+
+<ol>
+<li>Keep reading.</li>
+<li>I am going to explain a lot of things, so if you are kind of bored because you know a lot of the things that I&rsquo;m explaining already then (per 1) keep reading all the way to the end and <em>then</em> comment about it.</li>
+<li>Consider the Mistakes section that follows.</li>
+</ol>
+
+<h3 id="mistakes">Mistakes:</h3>
+
+<p>My intent is to be correct here, but the topic of discussion is rather complex, and alas I am human, (merely a thin film of veins and gristle), and prone to error. I have done my best to not make any incorrect or misleading statements in the post, but I have also spent most of the post writing about terms that commonly evoke misunderstanding and disagreement (both of <a href="https://en.wikipedia.org/wiki/Type_system" target="_blank">these</a> <a href="https://en.wikipedia.org/wiki/Strong_and_weak_typing" target="_blank">pages</a> in Wikipedia are contentious at the time of this writing), so I anticipate that I will have been wrong at least once. Kindly do let me know if this has occurred, respectful discussion can only improve the quality of the post.</p>
+
+<h2 id="type-systems">Type Systems:</h2>
+
+<p>There are a lot of different programming languages with diverse characteristics, but a useful attribute for classifying programming languages is their type system, so what is a type system? Fundamentally, and by questionable analogy to natural languages, a type system is a means for classifying the nouns and verbs of a programming language in order to constrain what statements are legal. These constraints are most valuable for preventing errors from being introduced into programs written in the language. When programming computers, all you are ever doing is specifying exactly what computations you want performed, and you are writing text to explain - step by step - what the computations are. Type systems are there to make it harder to express operations on data that do not support them. Some languages are designed to leverage type systems extensively, while others barely emphasize types at all, though few practical languages completely lack the idea of types.</p>
+
+<h3 id="static-vs-dynamic">Static vs Dynamic:</h3>
+
+<p>Static type checking verifies that the constructions in a program are validating according to the rules of the type system <em>before</em> the program is executed. A failure to type in a statically typed language typically is reported as a compiler error. Dynamic type checking defers type checks until the program is already executing (usually this means that the language is interpreted, though the definition of interpreted is a little vague as well). Most all languages are hybrids with regards to how they handle types (as well as how they are executed), so it&rsquo;s difficult to make precise generalities about families of languages and where they fit on this spectrum.</p>
+
+<h3 id="note-about-strong-vs-weak">Note about &ldquo;strong&rdquo; vs &ldquo;weak&rdquo;:</h3>
+
+<p>There is some colloquial use of the titular terms to express a continuum of type safety. I eschew these terms entirely here, due to their imprecision, preferring analysis of specific examples.</p>
+
+<h3 id="implicit-conversion-examples">Implicit conversion examples:</h3>
+
+<p>Often type system discussion is motivated by implicit conversion as the classic example of why static type systems are preferable to dynamic systems. A computer program is presented with an obvious error in it, and then there is some explanation of how a type system would have prevented the execution of the program containing the error, were it written in a statically typed language. In this post, a small useless program is presented with almost no context, and then translated to many languages. The intent of this post is to introduce ideas about types.</p>
+
+<h5 id="javascript">Javascript:</h5>
+
+<p>Javascript itself is not statically typed, there is no facility for declaring the type of your variables. This makes it easier to write short programs more quickly, but writing very large programs that are also correct becomes a difficult exercise indeed. In the example below, the &ldquo;result&rdquo; variable is assigned a string with the value of &ldquo;cat&rdquo;, appended with the value of the &ldquo;age&rdquo;, except coerced to a string. In this specific example, which has been contrived to demonstrate that a lack static type checking can lead to program constructions that lack useful meaning, the value of &ldquo;result&rdquo; doesn&rsquo;t have a useful meaning (but then neither does the program).</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">var</span> <span style="color: #a6e22e">cat</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;minkies&quot;</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">age</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">;</span>
+<span style="color: #66d9ef">var</span> <span style="color: #a6e22e">result</span> <span style="color: #f92672">=</span> <span style="color: #a6e22e">cat</span> <span style="color: #f92672">+</span> <span style="color: #a6e22e">age</span><span style="color: #f8f8f2">;</span> <span style="color: #75715e">// &quot;minkies2&quot;;</span>
+</pre></div>
+
+
+<p>Do not interpret this example as disparaging the design of Javascript, it is entirely possible that one could depend on this particular behavior to produce a succinct program that would otherwise have been longer and more cumbersome in a statically typed language. The dynamic nature of Javascript is regarded as a strength by its designers. There is a more complete exposition on Javascript&rsquo;s language design <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript#Overview" target="_blank">here</a>. There are a number of languages that have static type systems that compile to Javascript, that also retain similar syntax to Javascript, the best known of which is probably <a href="https://www.typescriptlang.org/index.html" target="_blank">TypeScript</a>.</p>
+
+<h5 id="c">C:</h5>
+
+<p>Warning, this C may <a href="https://english.stackexchange.com/questions/296311/using-put-hair-on-your-chest-for-women" target="_blank">put hair on your chest</a> (and potentially offend you unless your sense of humor is earthy and robust)!</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e">#include</span> <span style="color: #75715e">&lt;stdio.h&gt;</span>
+
+<span style="color: #66d9ef">int</span> <span style="color: #a6e22e">main</span><span style="color: #f8f8f2">()</span> <span style="color: #f8f8f2">{</span>
+  <span style="color: #66d9ef">char</span> <span style="color: #f8f8f2">cat</span> <span style="color: #f8f8f2">[]</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;minkies&quot;</span><span style="color: #f8f8f2">;</span>
+  <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">;</span>
+
+  <span style="color: #f8f8f2">printf(cat</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">age);</span> <span style="color: #75715e">// prints &quot;nkies&quot;</span>
+  <span style="color: #66d9ef">return</span> <span style="color: #ae81ff">0</span><span style="color: #f8f8f2">;</span>
+<span style="color: #f8f8f2">}</span>
+</pre></div>
+
+
+<p>At first glance, this result makes no sense, especially to someone that hasn&rsquo;t spent time learning the rules of C. What did happen was a lot of implicit conversion that lead to some surprising results - despite static type checks being performed by the C compiler. The &ldquo;cat&rdquo; variable was actually a <a href="http://boredzo.org/pointers/#strings" target="_blank">pointer to a character array</a>, and &ldquo;age&rdquo; was interpreted as the offset into that character array. The whole thing was printed as a string, due to the definition of printf. What we can learn from this is that the definition of a language and its type system are intermixed, and this can lead to surprising results if either are not understood.</p>
+
+<h5 id="python">Python:</h5>
+
+<p>As a point of comparison, let&rsquo;s look at another language that is not statically typed and see how it handles this particular case:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">cat</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;minkies&quot;</span>
+<span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">2</span>
+<span style="color: #f8f8f2">cat</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">age</span>
+<span style="color: #75715e"># TypeError: cannot concatenate &#39;str&#39; and &#39;int&#39; objects</span>
+</pre></div>
+
+
+<p>Python is not statically typed, but it will also not implicitly convert function arguments to different types. Python&rsquo;s <a href="https://docs.python.org/2/reference/datamodel.html#objects-values-and-types" target="_blank">documentation</a> (for version 2) on the subject is extremely precise, and they mention there that &ldquo;[an] object’s type determines the operations that the object supports [&hellip;] and also defines the possible values for objects of that type.&rdquo; So, static checking is not the only way to have useful type checks.</p>
+
+<h5 id="java">Java:</h5>
+
+<p>Java is statically typed. If you were waiting for the Java example here, expecting a triumphant statement of superiority, you&rsquo;re going to be disappointed by what follows: it will happily allow implicit conversion if the programmer is explicitly vague in a permissible way, as below.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">class</span> <span style="color: #a6e22e">Types</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">cat</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;minkies&quot;</span><span style="color: #f92672">;</span>
+    <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">2</span><span style="color: #f92672">;</span>
+    <span style="color: #75715e">// String works here too as the type of result, but int does not</span>
+    <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #f8f8f2">Object</span> <span style="color: #f8f8f2">result</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">cat</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">;</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">main</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f92672">[]</span> <span style="color: #f8f8f2">args</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+	<span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">result</span><span style="color: #f92672">);</span> <span style="color: #75715e">// prints &quot;minkies2&quot;</span>
+
+	<span style="color: #f8f8f2">Class</span><span style="color: #f92672">&lt;?&gt;</span> <span style="color: #f8f8f2">resultRuntimeClass</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">result</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getClass</span><span style="color: #f92672">();</span>
+	<span style="color: #75715e">// &quot;... java.lang.String&quot;</span>
+	<span style="color: #f8f8f2">System</span><span style="color: #f92672">.</span><span style="color: #a6e22e">out</span><span style="color: #f92672">.</span><span style="color: #a6e22e">println</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;the runtime class of result is: &quot;</span>
+				<span style="color: #f92672">+</span> <span style="color: #f8f8f2">resultRuntimeClass</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getName</span><span style="color: #f92672">());</span>
+
+    <span style="color: #f92672">}</span>
+<span style="color: #f92672">}</span>
+</pre></div>
+
+
+<p>This is a little different because the programmer was allowed to specify Object as the type of the &ldquo;result&rdquo; variable, and the program was still executed. Java does perform an <a href="https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.1.11" target="_blank">implicit conversion</a> here; the run time type of the result variable is String, whether its statically declared type is String or Object, and both alternatives are permissible by Java&rsquo;s static type checker. What we can learn from this is that static type systems can be permissible in the sense that they allow some constructions where the statically supplied type and the runtime type do not match.</p>
+
+<h5 id="clojure">Clojure:</h5>
+
+<p>In case you&rsquo;re not familiar with <a href="https://clojure.org/" target="_blank">Clojure</a>, it&rsquo;s a <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)" target="_blank">LISP</a> dialect. According to the website, it&rsquo;s &ldquo;a compiled language, yet remains completely dynamic,&rdquo; which makes it interesting for the purposes of this discussion. Let&rsquo;s see how it fares in the implicit conversion test:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f8f8f2">(</span><span style="color: #66d9ef">let </span><span style="color: #f8f8f2">[cat</span> <span style="color: #e6db74">&quot;minkies&quot;</span> <span style="color: #f8f8f2">age</span> <span style="color: #ae81ff">2</span><span style="color: #f8f8f2">]</span> <span style="color: #f8f8f2">(+ cat</span> <span style="color: #f8f8f2">age))</span>
+<span style="color: #75715e">;; ClassCastException java.lang.String cannot be cast to java.lang.Number  clojure.lang.Numbers.add (Numbers.java:128)</span>
+</pre></div>
+
+
+<p>Not unlike Python in this instance, Clojure has determined a run time type for the two variables, and then discovered that the addition operator was not applicable to that pair, upon attempting to perform the application, ultimately terminating with an exception. According to its creator, Clojure does not place a lot of emphasis on the <a href="https://youtu.be/ROor6_NGIWU?t=5m57s" target="_blank">use of types</a>. Interestingly, a third party has <a href="http://typedclojure.org/" target="_blank">supplied optional types as a library</a> within Clojure. The fact that this was even possible was due to the extreme flexibility of the Clojure language.</p>
+
+<h5 id="ocaml">OCaml:</h5>
+
+<p><a href="https://ocaml.org/" target="_blank">OCaml</a> is a language with a novel type system.</p>
+
+<p>Here&rsquo;s how it handles the example case:</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">cat</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;minkies&quot;</span><span style="color: #f92672">;;</span>
+<span style="color: #75715e">(* val cat : string = &quot;minkies&quot; *)</span>
+<span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">2</span><span style="color: #f92672">;;</span>
+<span style="color: #75715e">(* val age : int = 2 *)</span>
+<span style="color: #f8f8f2">cat</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">age</span><span style="color: #f92672">;;</span>
+<span style="color: #75715e">(* Error: This expression has type string but an expression was expected of type int *)</span>
+</pre></div>
+
+
+<p>Something else to notice in here is that the type of the variables were inferred and printed by the interpreter. The error that resulted was actually very useful in explaining why the code was not allowed to execute.</p>
+
+<h5 id="haskell">Haskell:</h5>
+
+<p><a href="https://www.haskell.org/" target="_blank">Haskell</a> is a language whose design is extremely influenced by type theory, and places more emphasis on types than most other languages. Like OCaml, it also supports type inference to remove the need to specify all of the types, while retaining the safety that types provide.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">age</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">2</span>
+<span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">cat</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;minkies&quot;</span>
+<span style="color: #a6e22e">cat</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">age</span>
+<span style="color: #75715e">-- &lt;interactive&gt;: ... error:</span>
+<span style="color: #75715e">--    * No instance for (Num [Char]) arising from a use of `+&#39;</span>
+<span style="color: #75715e">--    * In the expression: cat + age</span>
+<span style="color: #75715e">--      In an equation for `it&#39;: it = cat + age</span>
+</pre></div>
+
+
+<p>The result of attempting to add two items with incompatible types on the REPL results in failure very similar to what was seen in OCaml, and for similar reasons. Haskell has a concept of <a href="https://www.haskell.org/tutorial/classes.html" target="_blank">type classes</a> which groups together operations on types. The error message in this case is saying that it could not find how to make sense of an array of characters in terms of the <a href="https://hackage.haskell.org/package/base-4.9.1.0/docs/Prelude.html#t:Num" target="_blank">Num</a> class, which describes numeric things.</p>
+
+<h2 id="trade-offs">Trade-offs:</h2>
+
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Discipline</th>
+<th>Result</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Javascript</td>
+<td>Dynamic</td>
+<td>&ldquo;minkies2&rdquo;</td>
+</tr>
+
+<tr>
+<td>C</td>
+<td>Static</td>
+<td>&ldquo;nkies&rdquo;</td>
+</tr>
+
+<tr>
+<td>Python</td>
+<td>Dynamic</td>
+<td>exception</td>
+</tr>
+
+<tr>
+<td>Java</td>
+<td>Static</td>
+<td>&ldquo;minkies2&rdquo;</td>
+</tr>
+
+<tr>
+<td>Clojure</td>
+<td>Dynamic</td>
+<td>exception</td>
+</tr>
+
+<tr>
+<td>OCaml</td>
+<td>Static</td>
+<td>compile error</td>
+</tr>
+
+<tr>
+<td>Haskell</td>
+<td>Static</td>
+<td>compile error</td>
+</tr>
+</tbody>
+</table>
+
+<p>Many programming languages have different approaches to types, some of which have been captured here with simple examples. Effective use of types can enable the construction of larger more complex programs. The stricter a type system in a language is, generally the harder it is to learn to use, and the more restricted the composition of programs in that language is. Types are often used to more rigidly define a shared context to reason about programs with. I believe that the level of type safety that should be applied in a given domain should be decided by the penalty for failure in that domain.</p>
+
+<h2 id="further-reading">Further Reading:</h2>
+
+<p>There is a lot to know about types. <a href="https://www.cis.upenn.edu/~bcpierce/tapl/" target="_blank">This book</a> is perhaps the defacto book of types and their theoretical basis. Finally, types are far from the only mechanism for ensuring program safety.</p>
+
+    </div>
+    
+      <article>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'maxdeliso-name';
+    var disqus_identifier = 'http:\/\/maxdeliso.name\/post\/types-and-implicity\/';
+    var disqus_title = 'Types and Implicity';
+    var disqus_url = 'http:\/\/maxdeliso.name\/post\/types-and-implicity\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </article>
+    
+    <footer>
+      <hr>
+      <p>
+  Published
+  
+    
+      by <span itemprop="author">Max DeLiso</span>
+    
+  
+  <time datetime="2017-06-17T16:27:41-07:00">
+    17 Jun, 2017
+  </time>
+  
+  
+  using <span itemprop="wordCount">2086</span> words.
+</p>
+
+      
+
+
+
+    </footer>
+  </article>
+</main>
+    <footer>
+  
+  <p class="muted">
+    This page was generated using
+    <a target="_blank" rel="noopener" href="https://comfusion.github.io/after-dark/">After Dark</a>
+    for
+    <a target="_blank" rel="noopener" href="https://gohugo.io/">Hugo</a>.
+  </p>
+
+
+</footer>
+  </body>
+</html>

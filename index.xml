@@ -2,21 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reflections</title>
-    <link>https://maxdeliso.github.io/</link>
+    <link>http://maxdeliso.name/</link>
     <description>Recent content on Reflections</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Jun 2017 19:22:38 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 17 Jun 2017 16:27:41 -0700</lastBuildDate>
     
-	<atom:link href="https://maxdeliso.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://maxdeliso.name/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Types and Implicity</title>
+      <link>http://maxdeliso.name/post/types-and-implicity/</link>
+      <pubDate>Sat, 17 Jun 2017 16:27:41 -0700</pubDate>
+      
+      <guid>http://maxdeliso.name/post/types-and-implicity/</guid>
+      <description>Trust: The following is a rumination on some aspects of type systems and programming languages, along with several examples. I anticipate, only now just sitting down to write this, that the tone of the post shall be rather whimsical, although I could be wrong. It&amp;rsquo;s possible that, after having completed the post and then reviewing it some before publishing, I shall discover that the tone is not whimsical. If that&amp;rsquo;s the case, I may edit the post a bit, specifically these ruminations on anticipated whimsicalness, with the intent of not misleading the reader.</description>
+    </item>
+    
+    <item>
       <title>setting up a blog</title>
-      <link>https://maxdeliso.github.io/post/setting-up-a-blog/</link>
+      <link>http://maxdeliso.name/post/setting-up-a-blog/</link>
       <pubDate>Sat, 10 Jun 2017 19:22:38 -0700</pubDate>
       
-      <guid>https://maxdeliso.github.io/post/setting-up-a-blog/</guid>
+      <guid>http://maxdeliso.name/post/setting-up-a-blog/</guid>
       <description>I am replacing my previous page with a generated blog. Currently there&amp;rsquo;s not a lot here.</description>
     </item>
     
