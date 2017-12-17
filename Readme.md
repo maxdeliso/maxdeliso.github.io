@@ -16,15 +16,12 @@ Running locally:
 Publishing:
 
 ```
-  git clone https://github.com/maxdeliso/maxdeliso.github.io.git
-  git checkout hugo
+  git clone https://github.com/maxdeliso/maxdeliso.github.io.git -b hugo
   git submodule init
   git submodule update
+  git clone https://github.com/maxdeliso/maxdeliso.github.io.git -b master public
   hugo --theme=after-dark
   cd public
-  git init
-  git remote add origin https://github.com/maxdeliso/maxdeliso.github.io.git
-  git checkout -b master
   git add --all
   git commit -m "update message"
   git push origin master
