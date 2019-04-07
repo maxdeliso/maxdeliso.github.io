@@ -1,10 +1,18 @@
-baseURL = "http://maxdeliso.name/"
-languageCode = "en-us"
+baseurl = "https://maxdeliso.name/"
 title = "Reflections"
+copyright = "Copyright &copy; 2018, 2019 - Joseph Maximilian DeLiso"
+languageCode = "en-us"
+theme = "kiera"
+pygmentsCodeFences = true
+disqusShortname = "maxdeliso-name"
 
-[Params]
-  Author = "Max DeLiso"
-  disqusShortname = "maxdeliso-name"
+[params]
+    tagline = "a sparse bag of words, oft neglected"
 
-[blackfriday]
-  hrefTargetBlank = true
+[author]
+    name = "Max DeLiso"
+    github = "maxdeliso"
+    linkedin = "maxdeliso"
+    facebook = "jmdeliso"
+    twitter = "jmdeliso"
+    instagram = "jmdeliso"

@@ -10,7 +10,7 @@ Running locally:
 
 ```
   git checkout hugo
-  hugo server --theme=after-dark --buildDrafts server
+  hugo server --buildDrafts server
 ```
 
 Publishing:
@@ -20,7 +20,7 @@ Publishing:
   git submodule init
   git submodule update
   git clone https://github.com/maxdeliso/maxdeliso.github.io.git -b master public
-  hugo --theme=after-dark
+  hugo
   cd public
   git add --all
   git commit -m "update message"
