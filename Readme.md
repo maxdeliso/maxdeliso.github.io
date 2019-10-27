@@ -9,20 +9,24 @@ The themes directory contains git submodules referencing hugo themes.
 Running locally:
 
 ```
+  git clone git@github.com:maxdeliso/maxdeliso.github.io.git
   git checkout hugo
+  git submodule init
+  git submodule update
   hugo server --buildDrafts server
 ```
 
 Publishing:
 
 ```
-  git clone https://github.com/maxdeliso/maxdeliso.github.io.git -b hugo
+  git clone git@github.com:maxdeliso/maxdeliso.github.io.git -b hugo
   git submodule init
   git submodule update
-  git clone https://github.com/maxdeliso/maxdeliso.github.io.git -b master public
+  rm -rf public
+  git clone git@github.com:maxdeliso/maxdeliso.github.io.git -b master public
   hugo
   cd public
   git add --all
-  git commit -m "update message"
+  git commit -m "[update message]"
   git push origin master
 ```
