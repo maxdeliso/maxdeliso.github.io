@@ -1,0 +1,8 @@
+{{ $width := .Get "width" | default "1200px" }}
+<div class="large-image-container" style="text-align: center; margin: 1em 0; overflow: auto; max-height: 80vh; position: relative;">
+<a href="{{ .Get "src" }}" target="_blank" rel="noopener noreferrer" style="display: inline-block; cursor: zoom-in;" title="Click to view full size in new tab">
+<img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}" style="width: {{ $width }} !important; min-width: {{ $width }} !important; height: auto !important; display: block !important; margin: 0 auto !important;" />
+</a>
+<div style="margin-top: 0.5em; font-size: 0.85em; color: #666; font-style: italic;">Click image to view full size</div>
+</div>
+
