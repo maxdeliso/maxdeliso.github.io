@@ -1,34 +1,382 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Reflections</title>
-    <link>https://maxdeliso.name/post/</link>
-    <description>Recent content in Posts on Reflections</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>Copyright &amp;copy; 2018, 2019 - Joseph Maximilian DeLiso</copyright>
-    <lastBuildDate>Sat, 17 Jun 2017 16:27:41 -0700</lastBuildDate>
-    
-	<atom:link href="https://maxdeliso.name/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Types and Implicity</title>
-      <link>https://maxdeliso.name/post/types-and-implicity/</link>
-      <pubDate>Sat, 17 Jun 2017 16:27:41 -0700</pubDate>
-      
-      <guid>https://maxdeliso.name/post/types-and-implicity/</guid>
-      <description>Trust: The following is a rumination on some aspects of type systems and programming languages, along with several examples. I anticipate, only now just sitting down to write this, that the tone of the post shall be rather whimsical, although I could be wrong. It&amp;rsquo;s possible that, after having completed the post and then reviewing it some before publishing, I shall discover that the tone is not whimsical. If that&amp;rsquo;s the case, I may edit the post a bit, specifically these ruminations on anticipated whimsicalness, with the intent of not misleading the reader.</description>
-    </item>
-    
-    <item>
-      <title>setting up a blog</title>
-      <link>https://maxdeliso.name/post/setting-up-a-blog/</link>
-      <pubDate>Sat, 10 Jun 2017 19:22:38 -0700</pubDate>
-      
-      <guid>https://maxdeliso.name/post/setting-up-a-blog/</guid>
-      <description>I am replacing my previous page with a generated blog. Currently there&amp;rsquo;s not a lot here.</description>
-    </item>
-    
-  </channel>
-</rss>
+
+   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+     <channel>
+       <title>Posts on Reflections</title>
+       <link>https://maxdeliso.name/post/</link>
+       <description>Recent content in Posts on Reflections</description>
+       <generator>Hugo -- gohugo.io</generator>
+       <language>en-us</language>
+       <copyright>Copyright &amp;copy; 2018, 2019 - Joseph Maximilian DeLiso</copyright>
+       <lastBuildDate>Wed, 03 Dec 2025 11:55:40 -0500</lastBuildDate>
+       
+           <atom:link href="https://maxdeliso.name/post/index.xml" rel="self" type="application/rss+xml" />
+       
+       
+       <item>
+         <title>Poker In Church</title>
+         <link>https://maxdeliso.name/post/poker-in-church/</link>
+         <pubDate>Wed, 03 Dec 2025 11:55:40 -0500</pubDate>
+         
+         <guid>https://maxdeliso.name/post/poker-in-church/</guid>
+         <description>&lt;p&gt;&lt;em&gt;Look on my Works, ye Mighty, and despair!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;— Ozymandias, Percy Bysshe Shelley&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;Have you ever looked closely at a playing card? The 10 of Spades catches the eye with its inky black monolith of quantity. Though that construction is sturdy and familiar, it is also a deception. Let&amp;rsquo;s examine the visual patterns in playing cards to see what they can tell us about the nature of numbers, and then contrast them with another more universal numerical representation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://maxdeliso.name/cards/cards.svg&#34; alt=&#34;Traditional playing card pip arrangements (1-10)&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;a-generator-code&#34;&gt;A Generator Code&lt;/h2&gt;
+&lt;p&gt;There are some interesting consistencies to be found in their layout. According to &lt;a href=&#34;https://en.wikipedia.org/wiki/Kolmogorov_complexity&#34;&gt;Kolmogorov complexity&lt;/a&gt;, a thing is only as complex as the shortest program required to generate it. The fact that we can specify all ten card faces with just a handful of fractions and a few functions tells us a great deal about their structure.&lt;/p&gt;
+&lt;details&gt;
+    &lt;summary&gt;Show Generator&lt;/summary&gt;
+    &lt;div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#! /usr/bin/env python3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; dataclasses &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; dataclass
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; fractions &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Fraction
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@dataclass&lt;/span&gt;(frozen&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Pip&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x: float
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    y: float
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;COL_FRACTION: dict[str, Fraction] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;: Fraction(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;: Fraction(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;: Fraction(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;RANK_PATTERNS: dict[int, list[tuple[str, int]]] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;: [(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;L&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;), (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;R&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;)],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;pip_centers_for_rank&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    rank: int,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    card_x: float,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    card_y: float,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    card_w: float,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    card_h: float,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; list[Pip]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pattern &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; RANK_PATTERNS[rank]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    step_y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; card_h &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;15.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pips: list[Pip] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; col, row &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; pattern:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        nx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; COL_FRACTION[col]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        cx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; card_x &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; float(nx &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; card_w)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        cy &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; card_y &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; row &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; step_y
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        pips&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(Pip(cx, cy))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; pips
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;generate_svg&lt;/span&gt;() &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    width, height &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;140&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    card_w, card_h &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;80.0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;112.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    card_y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;14.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lines: list[str] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt;&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;svg xmlns=&amp;#34;http://www.w3.org/2000/svg&amp;#34; &amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;viewBox=&amp;#34;0 0 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;width&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;height&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; width=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;width&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; height=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;height&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;gt;&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;  &amp;lt;style&amp;gt;&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;    .card { fill: white; stroke: black; stroke-width: 2; }&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;    .pip { fill: black; }&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;  &amp;lt;/style&amp;gt;&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; rank &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        card_x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10.0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; (rank &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;100.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        lines&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;  &amp;lt;rect x=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;card_x&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; y=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;card_y&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;width=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;card_w&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; height=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;card_h&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; rx=&amp;#34;5&amp;#34; class=&amp;#34;card&amp;#34; /&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        r &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; pip &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; pip_centers_for_rank(rank, card_x, card_y, card_w, card_h):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            lines&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;  &amp;lt;circle cx=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;pip&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;x&lt;span style=&#34;color:#e6db74&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.2f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; cy=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;pip&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;y&lt;span style=&#34;color:#e6db74&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;.2f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; &amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;r=&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;r&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; class=&amp;#34;pip&amp;#34; /&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    lines&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;/svg&amp;gt;&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(lines)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(generate_svg())
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;/details&gt;
+&lt;p&gt;This script generates the image above.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Column positions&lt;/strong&gt;: &lt;code&gt;1/4&lt;/code&gt;, &lt;code&gt;2/4&lt;/code&gt;, &lt;code&gt;3/4&lt;/code&gt;—the card width is divided into four equal segments. The three pip columns are positioned at the first, second, and third quarter marks (left, center, right), leaving the fourth segment as margin on the right side.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Row positions&lt;/strong&gt;: The vertical layout uses a 14-row grid, with y-coordinates computed as &lt;code&gt;(row_index / 15) * card_height&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Card aspect ratio&lt;/strong&gt;: &lt;code&gt;80 × 112&lt;/code&gt; gives us exactly &lt;code&gt;7/5 = 1.4:1&lt;/code&gt;, a ratio that appears throughout the design. The height is &lt;code&gt;112 = 16 × 7&lt;/code&gt;, and the width is &lt;code&gt;80 = 16 × 5&lt;/code&gt;. This ensures that when we divide the card into 8 vertical segments, each segment is exactly &lt;code&gt;14&lt;/code&gt; units tall (&lt;code&gt;112 / 8 = 14&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;what-the-numbers-reveal&#34;&gt;What the Numbers Reveal&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Primality and factorization&lt;/strong&gt;: Composite numbers are built from simpler patterns. Rank 4 is two pairs (2×2). Rank 6 is three pairs (3×2). Rank 9 is four pairs plus a center (2×4+1). Rank 10 is two stacked 5s (2×5). The prime numbers (2, 3, 5, 7) often appear as building blocks, but notice how 7 breaks the pattern—it&amp;rsquo;s 6+1, not a clean factorization.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Symmetry and divisibility&lt;/strong&gt;: Even numbers (2, 4, 6, 8, 10) naturally form symmetric pairs. Odd numbers (1, 3, 5, 7, 9) require a center element to balance. The number 9 is particularly interesting: it&amp;rsquo;s &lt;code&gt;3²&lt;/code&gt;, and its pattern reflects this square structure, except turned on its side.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Negative space as representation&lt;/strong&gt;: There&amp;rsquo;s another type of representation hidden in the 8. The eight pips are arranged in two columns of three, with two center pips breaking the symmetry. But if you trace the empty space between the pips you&amp;rsquo;ll find the Arabic numeral &amp;ldquo;8&amp;rdquo; in the layout itself.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;pips-in-a-can&#34;&gt;Pips in a Can&lt;/h3&gt;
+&lt;p&gt;There&amp;rsquo;s a lookup table in the code. Rank 1 is hardcoded as &lt;code&gt;[(&amp;quot;C&amp;quot;, 8)]&lt;/code&gt;, 2 is &lt;code&gt;[(&amp;quot;C&amp;quot;, 4), (&amp;quot;C&amp;quot;, 12)]&lt;/code&gt;, and so on.&lt;/p&gt;
+&lt;p&gt;The playing card is not a pure mathematical graph, but a UX solution to the hardware limitations of our human visual cortex. We can only instantly recognize quantities up to four, and the card layout is a hack to bypass this limit. It aggregates pips into digestible sub-groups of pairs and triads so the user never has to count; a subtle compromise between visual and symbolic quantity.&lt;/p&gt;
+&lt;p&gt;And that compromise makes the system brittle. Suppose you wanted to generate Rank 11 using a function rather than a dictionary. How would the function know where to place the next pip? The rules are inconsistent: Rank 3 adds a center pip, Rank 4 switches to symmetric columns, Rank 7 breaks the symmetry entirely to fit a prime number into a rectangle. Worse, there are an infinite number of ways to arrange the pips; the layout we recognize on the cards is arbitrary, even though it does have many interesting properties.&lt;/p&gt;
+&lt;p&gt;The pictures are frozen fossil records. To further illuminate quantity we must thaw them out and consider instead the self-describing and repetitive process of becoming.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;numbers-as-do-this-n-times&#34;&gt;Numbers as &amp;ldquo;Do This n Times&amp;rdquo;&lt;/h3&gt;
+&lt;p&gt;This is the essence of &lt;strong&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Church_encoding&#34;&gt;Church encoding&lt;/a&gt;&lt;/strong&gt;: data types are defined by what they &lt;em&gt;do&lt;/em&gt;, not what they &lt;em&gt;are&lt;/em&gt;. A number isn&amp;rsquo;t a noun, it&amp;rsquo;s a verb.&lt;/p&gt;
+&lt;p&gt;Formally, a natural number &lt;code&gt;n&lt;/code&gt; is a function that:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;takes a function &lt;code&gt;f&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;takes a value &lt;code&gt;x&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;and returns &lt;code&gt;f&lt;/code&gt; applied to &lt;code&gt;x&lt;/code&gt; &lt;strong&gt;n times&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It&amp;rsquo;s a purely functional &lt;strong&gt;linked list of actions&lt;/strong&gt;, or a mathematical &lt;strong&gt;iterator pattern&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;a-brief-intro-to-triplang&#34;&gt;A Brief Intro to Triplang&lt;/h2&gt;
+&lt;p&gt;Triplang is an experimental programming language research project I&amp;rsquo;ve been working on to explore combinatory logic. Unlike the playing card&amp;rsquo;s static lookup table, Triplang represents numbers as executable processes—functions that compose and reduce according to the rules of &lt;a href=&#34;https://en.wikipedia.org/wiki/Lambda_calculus&#34;&gt;lambda calculus&lt;/a&gt;. This project is part of a broader effort to design a new language that isn&amp;rsquo;t pictured here yet, but the type inference system used to generate these visualizations serves as a practical tool for investigating these representational questions.&lt;/p&gt;
+&lt;p&gt;The visualizations below show how Church numerals appear as lambda terms.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Syntax&lt;/strong&gt;: &lt;code&gt;λx:a.t&lt;/code&gt; means &amp;ldquo;lambda x of type a, body t&amp;rdquo;. The colon &lt;code&gt;:&lt;/code&gt; annotates variables. The double colon &lt;code&gt;::&lt;/code&gt; annotates entire terms: &lt;code&gt;t :: T&lt;/code&gt; means &amp;ldquo;term t has type T&amp;rdquo;. Variables get types; terms get types. Both use colons, but &lt;code&gt;::&lt;/code&gt; is the assertion that binds them together.&lt;/p&gt;
+&lt;p&gt;The visualizations below show each term annotated with its inferred lambda calculus type—the type that each subexpression has during evaluation. This is distinct from the type of the final Church numeral expression itself, which represents the number&amp;rsquo;s computational structure rather than the intermediate types used in its construction.&lt;/p&gt;
+&lt;h4 id=&#34;zero&#34;&gt;Zero&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://maxdeliso.name/type_svg/type_0.svg&#34; alt=&#34;Church numeral 0&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Zero acts like a wall: it takes a function f and a value x, ignores the f entirely, and returns x. It refuses to iterate.&lt;/p&gt;
+&lt;h4 id=&#34;one&#34;&gt;One&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://maxdeliso.name/type_svg/type_1.svg&#34; alt=&#34;Church numeral 1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;One acts like a door: it takes f and x and lets f pass through once (f x). In combinatory logic, One corresponds to the &lt;strong&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/SKI_combinator_calculus&#34;&gt;I combinator&lt;/a&gt;&lt;/strong&gt;: just as I applies its argument unchanged, One applies its function argument once.&lt;/p&gt;
+&lt;h4 id=&#34;seven&#34;&gt;Seven&lt;/h4&gt;
+
+&lt;div class=&#34;large-image-container&#34; style=&#34;text-align: center; margin: 1em 0; overflow: auto; max-height: 80vh; position: relative;&#34;&gt;
+&lt;a href=&#34;https://maxdeliso.name/type_svg/type_7.svg&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; style=&#34;display: inline-block; cursor: zoom-in;&#34; title=&#34;Click to view full size in new tab&#34;&gt;
+&lt;img src=&#34;https://maxdeliso.name/type_svg/type_7.svg&#34; alt=&#34;Church numeral 7&#34; style=&#34;width: 1200px !important; min-width: 1200px !important; height: auto !important; display: block !important; margin: 0 auto !important;&#34; /&gt;
+&lt;/a&gt;
+&lt;div style=&#34;margin-top: 0.5em; font-size: 0.85em; color: #666; font-style: italic;&#34;&gt;Click image to view full size&lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;7 reveals linear term growth: many nodes representing the nested composition required to express &amp;ldquo;apply seven times.&amp;rdquo; Each level of nesting corresponds to another application.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/maxdeliso/typed-ski/blob/0556a5eea39da4e7225934230b6daace5cff7f9b/bin/genTypeSvg.ts&#34;&gt;Generator Code&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;the-final-fold&#34;&gt;The Final Fold&lt;/h2&gt;
+&lt;p&gt;We&amp;rsquo;ve examined two radically different representations of quantity: the visual patterns on playing cards and the computational structures of Church numerals. The playing card is a lookup table optimized for instant recognition. The Church numeral is a living process that &lt;em&gt;becomes&lt;/em&gt; its value through application.&lt;/p&gt;
+&lt;p&gt;Both representations reveal something fundamental about numbers: they exist simultaneously as data—static patterns to be recognized and manipulated—and as code—executable processes that generate their meaning through application. The card layout exploits our visual cortex&amp;rsquo;s ability to recognize small groups, while Church numerals are built from the mathematical properties of function composition.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Triplang as a vehicle for investigation&lt;/strong&gt;: The visualizations shown here are generated from Triplang&amp;rsquo;s type inference system, which serves as a practical tool for exploring these representational questions. By implementing Church numerals and combinators directly in the language, we can examine how computational structures manifest visually, how type information flows through function composition, and how different encodings affect both the structure and the types of the resulting terms.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Looking ahead&lt;/strong&gt;: The relationship between visual and computational representations extends beyond numbers. Boolean logic, data structures, and even &lt;a href=&#34;https://en.wikipedia.org/wiki/Combinatory_logic&#34;&gt;entire programs&lt;/a&gt; can be encoded entirely in functions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For the hackers&lt;/strong&gt;: If you&amp;rsquo;re interested in working with these structures in TypeScript, check out &lt;a href=&#34;https://jsr.io/@maxdeliso/typed-ski&#34;&gt;&lt;code&gt;@maxdeliso/typed-ski&lt;/code&gt;&lt;/a&gt; on JSR, which provides a type-safe implementation of combinatory logic and Church encodings.&lt;/p&gt;
+&lt;p&gt;🦀 &lt;strong&gt;For the rustaceans&lt;/strong&gt; 🦀: For Rust developers, &lt;a href=&#34;https://crates.io/crates/typed-ski&#34;&gt;&lt;code&gt;typed-ski&lt;/code&gt;&lt;/a&gt; is available on crates.io. That crate contains an implementation of an efficient evaluator that enables high-performance execution of combinatory structures in the browser and other WASM targets.&lt;/p&gt;
+</description>
+       </item>
+       
+       <item>
+         <title>Types and Implicity</title>
+         <link>https://maxdeliso.name/post/types-and-implicity/</link>
+         <pubDate>Sat, 17 Jun 2017 16:27:41 -0700</pubDate>
+         
+         <guid>https://maxdeliso.name/post/types-and-implicity/</guid>
+         <description>&lt;h2 id=&#34;trust&#34;&gt;Trust:&lt;/h2&gt;
+&lt;p&gt;The following is a rumination on some aspects of type systems and programming languages, along with several examples. I anticipate, only now just sitting down to write this, that the tone of the post shall be rather whimsical, although I could be wrong. It&amp;rsquo;s possible that, after having completed the post and then reviewing it some before publishing, I shall discover that the tone is not whimsical. If that&amp;rsquo;s the case, I may edit the post a bit, specifically these ruminations on anticipated whimsicalness, with the intent of not misleading the reader. It is important to mention that, by design, all edits to this post after it has been published shall be discoverable publicly, due to the source code for the site being &lt;a href=&#34;https://github.com/maxdeliso/maxdeliso.github.io&#34;&gt;publicly available&lt;/a&gt; alongside the generated website. Now that we have hopefully established some trust, let&amp;rsquo;s prevaricate some more prior to veering into the more salient points.&lt;/p&gt;
+&lt;h3 id=&#34;target-audience&#34;&gt;Target audience:&lt;/h3&gt;
+&lt;p&gt;Normally these posts begin with an elaborate prelude warning the reader that they may not be able to cope with the material that is to follow, and that merely considering skipping forward into the details of the article below without having successfully defended a thesis shall cause blindness and difficulty breathing, at a minimum. Then, after that, a lengthy list of qualifications that are deemed acceptable as a substitute for successful thesis defense are supplied, in decreasing order of preference. I shall address both of these formalities as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Keep reading.&lt;/li&gt;
+&lt;li&gt;I am going to explain a lot of things, so if you are kind of bored because you know a lot of the things that I&amp;rsquo;m explaining already then (per 1) keep reading all the way to the end and &lt;em&gt;then&lt;/em&gt; comment about it.&lt;/li&gt;
+&lt;li&gt;Consider the Mistakes section that follows.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;mistakes&#34;&gt;Mistakes:&lt;/h3&gt;
+&lt;p&gt;My intent is to be correct here, but the topic of discussion is rather complex, and alas I am human, (merely a thin film of veins and gristle), and prone to error. I have done my best to not make any incorrect or misleading statements in the post, but I have also spent most of the post writing about terms that commonly evoke misunderstanding and disagreement (both of &lt;a href=&#34;https://en.wikipedia.org/wiki/Type_system&#34;&gt;these&lt;/a&gt; &lt;a href=&#34;https://en.wikipedia.org/wiki/Strong_and_weak_typing&#34;&gt;pages&lt;/a&gt; in Wikipedia are contentious at the time of this writing), so I anticipate that I will have been wrong at least once. Kindly do let me know if this has occurred, respectful discussion can only improve the quality of the post.&lt;/p&gt;
+&lt;h2 id=&#34;type-systems&#34;&gt;Type Systems:&lt;/h2&gt;
+&lt;p&gt;There are a lot of different programming languages with diverse characteristics, but a useful attribute for classifying programming languages is their type system, so what is a type system? Fundamentally, and by questionable analogy to natural languages, a type system is a means for classifying the nouns and verbs of a programming language in order to constrain what statements are legal. These constraints are most valuable for preventing errors from being introduced into programs written in the language. When programming computers, all you are ever doing is specifying exactly what computations you want performed, and you are writing text to explain - step by step - what the computations are. Type systems are there to make it harder to express operations on data that do not support them. Some languages are designed to leverage type systems extensively, while others barely emphasize types at all, though few practical languages completely lack the idea of types.&lt;/p&gt;
+&lt;h3 id=&#34;static-vs-dynamic&#34;&gt;Static vs Dynamic:&lt;/h3&gt;
+&lt;p&gt;Static type checking verifies that the constructions in a program are validating according to the rules of the type system &lt;em&gt;before&lt;/em&gt; the program is executed. A failure to type in a statically typed language typically is reported as a compiler error. Dynamic type checking defers type checks until the program is already executing (usually this means that the language is interpreted, though the definition of interpreted is a little vague as well). Most all languages are hybrids with regards to how they handle types (as well as how they are executed), so it&amp;rsquo;s difficult to make precise generalities about families of languages and where they fit on this spectrum.&lt;/p&gt;
+&lt;h3 id=&#34;note-about-strong-vs-weak&#34;&gt;Note about &amp;ldquo;strong&amp;rdquo; vs &amp;ldquo;weak&amp;rdquo;:&lt;/h3&gt;
+&lt;p&gt;There is some colloquial use of the titular terms to express a continuum of type safety. I eschew these terms entirely here, due to their imprecision, preferring analysis of specific examples.&lt;/p&gt;
+&lt;h3 id=&#34;implicit-conversion-examples&#34;&gt;Implicit conversion examples:&lt;/h3&gt;
+&lt;p&gt;Often type system discussion is motivated by implicit conversion as the classic example of why static type systems are preferable to dynamic systems. A computer program is presented with an obvious error in it, and then there is some explanation of how a type system would have prevented the execution of the program containing the error, were it written in a statically typed language. In this post, a small useless program is presented with almost no context, and then translated to many languages. The intent of this post is to introduce ideas about types.&lt;/p&gt;
+&lt;h5 id=&#34;javascript&#34;&gt;Javascript:&lt;/h5&gt;
+&lt;p&gt;Javascript itself is not statically typed, there is no facility for declaring the type of your variables. This makes it easier to write short programs more quickly, but writing very large programs that are also correct becomes a difficult exercise indeed. In the example below, the &amp;ldquo;result&amp;rdquo; variable is assigned a string with the value of &amp;ldquo;cat&amp;rdquo;, appended with the value of the &amp;ldquo;age&amp;rdquo;, except coerced to a string. In this specific example, which has been contrived to demonstrate that a lack static type checking can lead to program constructions that lack useful meaning, the value of &amp;ldquo;result&amp;rdquo; doesn&amp;rsquo;t have a useful meaning (but then neither does the program).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minkies&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;age&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;var&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;result&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;age&lt;/span&gt;; &lt;span style=&#34;color:#75715e&#34;&gt;// &amp;#34;minkies2&amp;#34;;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Do not interpret this example as disparaging the design of Javascript, it is entirely possible that one could depend on this particular behavior to produce a succinct program that would otherwise have been longer and more cumbersome in a statically typed language. The dynamic nature of Javascript is regarded as a strength by its designers. There is a more complete exposition on Javascript&amp;rsquo;s language design &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript#Overview&#34;&gt;here&lt;/a&gt;. There are a number of languages that have static type systems that compile to Javascript, that also retain similar syntax to Javascript, the best known of which is probably &lt;a href=&#34;https://www.typescriptlang.org/index.html&#34;&gt;TypeScript&lt;/a&gt;.&lt;/p&gt;
+&lt;h5 id=&#34;c&#34;&gt;C:&lt;/h5&gt;
+&lt;p&gt;Warning, this C may &lt;a href=&#34;https://english.stackexchange.com/questions/296311/using-put-hair-on-your-chest-for-women&#34;&gt;put hair on your chest&lt;/a&gt; (and potentially offend you unless your sense of humor is earthy and robust)!&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; cat [] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minkies&amp;#34;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; age &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;printf&lt;/span&gt;(cat &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; age); &lt;span style=&#34;color:#75715e&#34;&gt;// prints &amp;#34;nkies&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;At first glance, this result makes no sense, especially to someone that hasn&amp;rsquo;t spent time learning the rules of C. What did happen was a lot of implicit conversion that lead to some surprising results - despite static type checks being performed by the C compiler. The &amp;ldquo;cat&amp;rdquo; variable was actually a &lt;a href=&#34;http://boredzo.org/pointers/#strings&#34;&gt;pointer to a character array&lt;/a&gt;, and &amp;ldquo;age&amp;rdquo; was interpreted as the offset into that character array. The whole thing was printed as a string, due to the definition of printf. What we can learn from this is that the definition of a language and its type system are intermixed, and this can lead to surprising results if either are not understood.&lt;/p&gt;
+&lt;h5 id=&#34;python&#34;&gt;Python:&lt;/h5&gt;
+&lt;p&gt;As a point of comparison, let&amp;rsquo;s look at another language that is not statically typed and see how it handles this particular case:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minkies&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;age &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; age
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# TypeError: cannot concatenate &amp;#39;str&amp;#39; and &amp;#39;int&amp;#39; objects&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Python is not statically typed, but it will also not implicitly convert function arguments to different types. Python&amp;rsquo;s &lt;a href=&#34;https://docs.python.org/2/reference/datamodel.html#objects-values-and-types&#34;&gt;documentation&lt;/a&gt; (for version 2) on the subject is extremely precise, and they mention there that &amp;ldquo;[an] object’s type determines the operations that the object supports [&amp;hellip;] and also defines the possible values for objects of that type.&amp;rdquo; So, static checking is not the only way to have useful type checks.&lt;/p&gt;
+&lt;h5 id=&#34;java&#34;&gt;Java:&lt;/h5&gt;
+&lt;p&gt;Java is statically typed. If you were waiting for the Java example here, expecting a triumphant statement of superiority, you&amp;rsquo;re going to be disappointed by what follows: it will happily allow implicit conversion if the programmer is explicitly vague in a permissible way, as below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Types&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; String cat &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minkies&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; age &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;// String works here too as the type of result, but int does not
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;final&lt;/span&gt; Object result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cat &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; age&lt;span style=&#34;color:#f92672&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;String &lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;result&lt;span style=&#34;color:#f92672&#34;&gt;);&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;// prints &amp;#34;minkies2&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	Class&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&amp;gt;&lt;/span&gt; resultRuntimeClass &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; result&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getClass&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;// &amp;#34;... java.lang.String&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	System&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;the runtime class of result is: &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;				&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; resultRuntimeClass&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;getName&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;());&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is a little different because the programmer was allowed to specify Object as the type of the &amp;ldquo;result&amp;rdquo; variable, and the program was still executed. Java does perform an &lt;a href=&#34;https://docs.oracle.com/javase/specs/jls/se8/html/jls-5.html#jls-5.1.11&#34;&gt;implicit conversion&lt;/a&gt; here; the run time type of the result variable is String, whether its statically declared type is String or Object, and both alternatives are permissible by Java&amp;rsquo;s static type checker. What we can learn from this is that static type systems can be permissible in the sense that they allow some constructions where the statically supplied type and the runtime type do not match.&lt;/p&gt;
+&lt;h5 id=&#34;clojure&#34;&gt;Clojure:&lt;/h5&gt;
+&lt;p&gt;In case you&amp;rsquo;re not familiar with &lt;a href=&#34;https://clojure.org/&#34;&gt;Clojure&lt;/a&gt;, it&amp;rsquo;s a &lt;a href=&#34;https://en.wikipedia.org/wiki/Lisp_(programming_language)&#34;&gt;LISP&lt;/a&gt; dialect. According to the website, it&amp;rsquo;s &amp;ldquo;a compiled language, yet remains completely dynamic,&amp;rdquo; which makes it interesting for the purposes of this discussion. Let&amp;rsquo;s see how it fares in the implicit conversion test:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-clojure&#34; data-lang=&#34;clojure&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;let &lt;/span&gt;[cat &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minkies&amp;#34;&lt;/span&gt; age &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] (+ cat age))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;;; ClassCastException java.lang.String cannot be cast to java.lang.Number  clojure.lang.Numbers.add (Numbers.java:128)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Not unlike Python in this instance, Clojure has determined a run time type for the two variables, and then discovered that the addition operator was not applicable to that pair, upon attempting to perform the application, ultimately terminating with an exception. According to its creator, Clojure does not place a lot of emphasis on the &lt;a href=&#34;https://youtu.be/ROor6_NGIWU?t=5m57s&#34;&gt;use of types&lt;/a&gt;. Interestingly, a third party has &lt;a href=&#34;http://typedclojure.org/&#34;&gt;supplied optional types as a library&lt;/a&gt; within Clojure. The fact that this was even possible was due to the extreme flexibility of the Clojure language.&lt;/p&gt;
+&lt;h5 id=&#34;ocaml&#34;&gt;OCaml:&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&#34;https://ocaml.org/&#34;&gt;OCaml&lt;/a&gt; is a language with a novel type system.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s how it handles the example case:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-ocaml&#34; data-lang=&#34;ocaml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; cat &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minkies&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;(* val cat : string = &amp;#34;minkies&amp;#34; *)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; age &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; 2&lt;span style=&#34;color:#f92672&#34;&gt;;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;(* val age : int = 2 *)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; age&lt;span style=&#34;color:#f92672&#34;&gt;;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;(* Error: This expression has type string but an expression was expected of type int *)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Something else to notice in here is that the type of the variables were inferred and printed by the interpreter. The error that resulted was actually very useful in explaining why the code was not allowed to execute.&lt;/p&gt;
+&lt;h5 id=&#34;haskell&#34;&gt;Haskell:&lt;/h5&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.haskell.org/&#34;&gt;Haskell&lt;/a&gt; is a language whose design is extremely influenced by type theory, and places more emphasis on types than most other languages. Like OCaml, it also supports type inference to remove the need to specify all of the types, while retaining the safety that types provide.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; age &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; cat &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minkies&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;cat&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; age
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;-- &amp;lt;interactive&amp;gt;: ... error:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;--    * No instance for (Num [Char]) arising from a use of `+&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;--    * In the expression: cat + age&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;--      In an equation for `it&amp;#39;: it = cat + age&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The result of attempting to add two items with incompatible types on the REPL results in failure very similar to what was seen in OCaml, and for similar reasons. Haskell has a concept of &lt;a href=&#34;https://www.haskell.org/tutorial/classes.html&#34;&gt;type classes&lt;/a&gt; which groups together operations on types. The error message in this case is saying that it could not find how to make sense of an array of characters in terms of the &lt;a href=&#34;https://hackage.haskell.org/package/base-4.9.1.0/docs/Prelude.html#t:Num&#34;&gt;Num&lt;/a&gt; class, which describes numeric things.&lt;/p&gt;
+&lt;h2 id=&#34;trade-offs&#34;&gt;Trade-offs:&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Language&lt;/th&gt;
+&lt;th&gt;Discipline&lt;/th&gt;
+&lt;th&gt;Result&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Javascript&lt;/td&gt;
+&lt;td&gt;Dynamic&lt;/td&gt;
+&lt;td&gt;&amp;ldquo;minkies2&amp;rdquo;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;Static&lt;/td&gt;
+&lt;td&gt;&amp;ldquo;nkies&amp;rdquo;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;Dynamic&lt;/td&gt;
+&lt;td&gt;exception&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;Static&lt;/td&gt;
+&lt;td&gt;&amp;ldquo;minkies2&amp;rdquo;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Clojure&lt;/td&gt;
+&lt;td&gt;Dynamic&lt;/td&gt;
+&lt;td&gt;exception&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;OCaml&lt;/td&gt;
+&lt;td&gt;Static&lt;/td&gt;
+&lt;td&gt;compile error&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Haskell&lt;/td&gt;
+&lt;td&gt;Static&lt;/td&gt;
+&lt;td&gt;compile error&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Many programming languages have different approaches to types, some of which have been captured here with simple examples. Effective use of types can enable the construction of larger more complex programs. The stricter a type system in a language is, generally the harder it is to learn to use, and the more restricted the composition of programs in that language is. Types are often used to more rigidly define a shared context to reason about programs with. I believe that the level of type safety that should be applied in a given domain should be decided by the penalty for failure in that domain.&lt;/p&gt;
+&lt;h2 id=&#34;further-reading&#34;&gt;Further Reading:&lt;/h2&gt;
+&lt;p&gt;There is a lot to know about types. &lt;a href=&#34;https://www.cis.upenn.edu/~bcpierce/tapl/&#34;&gt;This book&lt;/a&gt; is perhaps the defacto book of types and their theoretical basis. Finally, types are far from the only mechanism for ensuring program safety.&lt;/p&gt;
+</description>
+       </item>
+       
+       <item>
+         <title>setting up a blog</title>
+         <link>https://maxdeliso.name/post/setting-up-a-blog/</link>
+         <pubDate>Sat, 10 Jun 2017 19:22:38 -0700</pubDate>
+         
+         <guid>https://maxdeliso.name/post/setting-up-a-blog/</guid>
+         <description>&lt;p&gt;I am replacing my previous page with a generated blog. Currently there&amp;rsquo;s not a lot here.&lt;/p&gt;
+</description>
+       </item>
+       
+     </channel>
+   </rss>

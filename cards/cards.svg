@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 140" width="1000" height="140">
+  <style>
+    .card { fill: white; stroke: black; stroke-width: 2; }
+    .pip { fill: black; }
+  </style>
+  <rect x="10.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="50.00" cy="70.00" r="5.0" class="pip" />
+  <rect x="110.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="150.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="150.00" cy="98.00" r="5.0" class="pip" />
+  <rect x="210.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="250.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="250.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="250.00" cy="98.00" r="5.0" class="pip" />
+  <rect x="310.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="330.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="370.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="330.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="370.00" cy="98.00" r="5.0" class="pip" />
+  <rect x="410.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="430.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="470.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="450.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="430.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="470.00" cy="98.00" r="5.0" class="pip" />
+  <rect x="510.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="530.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="570.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="530.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="570.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="530.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="570.00" cy="98.00" r="5.0" class="pip" />
+  <rect x="610.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="630.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="670.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="630.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="670.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="630.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="670.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="650.00" cy="56.00" r="5.0" class="pip" />
+  <rect x="710.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="730.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="770.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="730.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="770.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="730.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="770.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="750.00" cy="56.00" r="5.0" class="pip" />
+  <circle cx="750.00" cy="84.00" r="5.0" class="pip" />
+  <rect x="810.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="830.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="870.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="830.00" cy="56.00" r="5.0" class="pip" />
+  <circle cx="870.00" cy="56.00" r="5.0" class="pip" />
+  <circle cx="850.00" cy="70.00" r="5.0" class="pip" />
+  <circle cx="830.00" cy="84.00" r="5.0" class="pip" />
+  <circle cx="870.00" cy="84.00" r="5.0" class="pip" />
+  <circle cx="830.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="870.00" cy="98.00" r="5.0" class="pip" />
+  <rect x="910.0" y="14.0" width="80.0" height="112.0" rx="5" class="card" />
+  <circle cx="930.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="970.00" cy="42.00" r="5.0" class="pip" />
+  <circle cx="930.00" cy="56.00" r="5.0" class="pip" />
+  <circle cx="970.00" cy="56.00" r="5.0" class="pip" />
+  <circle cx="930.00" cy="84.00" r="5.0" class="pip" />
+  <circle cx="970.00" cy="84.00" r="5.0" class="pip" />
+  <circle cx="930.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="970.00" cy="98.00" r="5.0" class="pip" />
+  <circle cx="950.00" cy="49.00" r="5.0" class="pip" />
+  <circle cx="950.00" cy="91.00" r="5.0" class="pip" />
+</svg>
